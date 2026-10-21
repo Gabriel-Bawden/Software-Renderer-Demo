@@ -195,6 +195,11 @@ int main()
 	float animation_speed = 30.0f;
 	float animation_scale = 1.0f;
 
+	unsigned char lighting = 0;
+	unsigned char lighting_point = 0;
+	unsigned char shadow = 0;
+	unsigned char animation = 0;
+
 	//Load Models
 	char model_directory[MAXIMUM_PATH] = {0};
 	str_cat(model_directory, os_file_get_directory(), sizeof(model_directory));
@@ -233,7 +238,6 @@ int main()
 	struct model test2;
 	model_create(&test2, mesh_find(&models, "cube"), NULL);
 	model_set_z(&test2, 5);
-	//model_set_y(&test2, 5);
 	dynarray_push(&scene, &test2);
 
 	struct model test3;
@@ -269,6 +273,12 @@ int main()
 	model_create(&test6, mesh_find(&models, "wave"), NULL);
 	model_set_x(&test6, 40);
 	dynarray_push(&scene, &test6);
+
+	struct model test7;
+	model_create(&test7, mesh_find(&models, "square"), texture_find(&textures, "checkerboard"));
+	model_set_z(&test7, 5);
+	model_set_y(&test7, 6);
+	dynarray_push(&scene, &test7);
 	//
 
 	struct menu menu = {0};
@@ -399,7 +409,7 @@ int main()
 	light_dir_set_theta_y(&light_dirs[0], PI / 2.2f);
 	gui_set_slider_position(menu.slider_light, light_dirs[0].theta_y / (2 * PI));
 
-	gui_set_state(menu.check_light, 1);
+	gui_set_state(menu.check_light, lighting);
 
 	gui_hide(menu.owner_label);
 	gui_hide(menu.gui_root);
@@ -408,11 +418,6 @@ int main()
 
 	struct dynarray events;
 	dynarray_create(&events, sizeof(struct gui_event), NULL);
-
-	unsigned char lighting = 1;
-	unsigned char lighting_point = 0;
-	unsigned char shadow = 0;
-	unsigned char animation = 0;
 	
 	size_t current_index = 0;
 
@@ -935,29 +940,3 @@ int main()
 
 	return 0;
 }
-
-//Byte alignment is currently 512, so the file size will always be a multiple of 512
-
-//TODO
-//Models can have multiple types of faces, ie both faces with and without textures. Currently only supporting one type.
-//Deal with strict aliasing
-//Add text wrapping
-//Do error checking for file input
-//Improve float to string and string to float functions
-//Store lighting information as bits
-//All windows share an event loop. This could be difficult to address.
-//Need to address negative texture coordinates
-//Use bools
-//Use ptrdiff_t
-//Support kerning
-//XSaveContext() and XFindContext() for X11. Equivalent to SetWindowLongPtrW and GetWindowLongPtrW
-
-//C/C++ -> command line | /GS- /Gs999999999 | This sets the probing values
-//Linker -> System | Reserve and Commit stack memory 0x100000
-//The two above settings deal with chkstk
-//os_windows_mem.c has Whole Program Disabled while main.c has it enabled. These settings are set by right-clicking on the source files in the solution explorer
-//C/C++ -> Code Generation -> Enable Enhanced Instruction Set -> Advanced Vector Extensions 2: Improves performance, but not available on older CPUs
-
-//To switch back to CRT for testing purposes, turn off NODEFAULTLIB, remove the entry point, and switch to SUBSYSTEM/CONSOLE
-
-//Suggested disabled warnings: 28159; 6387; 4702; 28251 - NOTE: 28251 seems to be gone
