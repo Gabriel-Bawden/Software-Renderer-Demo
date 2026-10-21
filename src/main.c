@@ -171,7 +171,7 @@ int main()
 	dynarray_push(&textures, &placeholder_texture); //Ensuring that there is always at least one texture
 	texture_load_directory(texture_directory, &textures);
 
-	//Create Camera
+	//Create Cameras
 	struct camera cams[1] = {0};
 	camera_create(&cams[0], 899, 511, 0.5f, 30, 90, CAMERA_PERSPECTIVE);
 	
