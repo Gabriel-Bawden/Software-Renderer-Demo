@@ -1,6 +1,8 @@
 #ifndef MATH_H
 #define MATH_H
 
+#include <stddef.h>
+
 //Mathematical Constants
 #define PI 3.1415926f
 #define PI_2 (PI / 2.0f)
@@ -12,9 +14,13 @@ float math_abs_float(float a);
 
 int math_min_int(int a, int b);
 
+size_t math_min_size_t(size_t a, size_t b);
+
 float math_min_float(float a, float b);
 
 int math_max_int(int a, int b);
+
+size_t math_max_size_t(size_t a, size_t b);
 
 float math_max_float(float a, float b);
 

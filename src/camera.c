@@ -210,8 +210,8 @@ void camera_set_theta_z(struct camera *v, float theta_z)
 
 void camera_key_x(struct camera *v, float s)
 {
-	float x = v->x + (s * math_sin(-v->theta_y));
-	float z = v->z + (s * math_cos(-v->theta_y));
+	float x = v->x + (s * math_cos(-v->theta_y));
+	float z = v->z - (s * math_sin(-v->theta_y));
 
 	camera_set_x(v, x);
 	camera_set_z(v, z);
@@ -226,8 +226,8 @@ void camera_key_y(struct camera *v, float s)
 
 void camera_key_z(struct camera *v, float s)
 {
-	float x = v->x + (s * math_cos(-v->theta_y));
-	float z = v->z - (s * math_sin(-v->theta_y));
+	float x = v->x + (s * math_sin(-v->theta_y));
+	float z = v->z + (s * math_cos(-v->theta_y));
 
 	camera_set_x(v, x);
 	camera_set_z(v, z);

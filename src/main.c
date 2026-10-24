@@ -21,9 +21,9 @@ struct menu
 {
 	struct gui *gui_root;
 
-	struct gui *owner_label;
-	struct gui *FPS_label;
-	struct gui *FPS_value;
+	struct gui *label_owner;
+	struct gui *label_fps;
+	struct gui *textbox_fps;
 
 	struct gui *tab;
 	struct gui *window_scene;
@@ -33,69 +33,69 @@ struct menu
 	struct gui *window_animation;
 	struct gui *window_test;
 
-	struct gui *model_label;
-	struct gui *model_value;
-	struct gui *x_value;
-	struct gui *y_value;
-	struct gui *z_value;
-	struct gui *text_label;
-	struct gui *texture_value;
-	struct gui *norm_label;
-	struct gui *norm_value;
-	struct gui *delete_button;
-	struct gui *left_arrow_button;
-	struct gui *right_arrow_button;
-	struct gui *clear_button;
+	struct gui *label_model_current;
+	struct gui *textbox_model_current;
+	struct gui *textbox_x_current;
+	struct gui *textbox_y_current;
+	struct gui *textbox_z_current;
+	struct gui *label_texture_current;
+	struct gui *textbox_texture_current;
+	struct gui *label_normal_current;
+	struct gui *textbox_normal_current;
+	struct gui *button_delete;
+	struct gui *button_left_arrow;
+	struct gui *button_right_arrow;
+	struct gui *button_clear;
 	struct gui *slider_roty;
-	struct gui *slider_roty_label;
+	struct gui *label_roty;
 	struct gui *slider_r;
-	struct gui *slider_r_label;
+	struct gui *label_r;
 	struct gui *slider_g;
-	struct gui *slider_g_label;
+	struct gui *label_g;
 	struct gui *slider_b;
-	struct gui *slider_b_label;
+	struct gui *label_b;
 	struct gui *slider_sp;
-	struct gui *slider_sp_label;
+	struct gui *label_sp;
 	struct gui *slider_ns;
-	struct gui *slider_ns_label;
+	struct gui *label_ns;
 
-	struct gui *new_model_label;
-	struct gui *new_model_value;
-	struct gui *new_x_value;
-	struct gui *new_y_value;
-	struct gui *new_z_value;
-	struct gui *new_text_label;
-	struct gui *new_texture_value;
-	struct gui *new_norm_label;
-	struct gui *new_norm_value;
-	struct gui *new_create_button;
+	struct gui *label_model_new;
+	struct gui *textbox_model_new;
+	struct gui *textbox_x_new;
+	struct gui *textbox_y_new;
+	struct gui *textbox_z_new;
+	struct gui *label_texture_new;
+	struct gui *textbox_texture_new;
+	struct gui *label_normal_new;
+	struct gui *textbox_normal_new;
+	struct gui *create_button_new;
 
-	struct gui *check_light_label;
-	struct gui *check_light;
-	struct gui *check_shadow_label;
-	struct gui *check_shadow;
-	struct gui *check_point_label;
-	struct gui *check_point;
-	struct gui *slider_light_label;
-	struct gui *slider_light;
-	struct gui *slider_light_x_label;
-	struct gui *slider_light_x;
-	struct gui *slider_light_y_label;
-	struct gui *slider_light_y;
-	struct gui *slider_light_z_label;
-	struct gui *slider_light_z;
+	struct gui *label_light;
+	struct gui *checkbox_light;
+	struct gui *label_shadow;
+	struct gui *checkbox_shadow;
+	struct gui *label_light_point;
+	struct gui *checkbox_light_point;
+	struct gui *label_light_roty;
+	struct gui *slider_light_roty;
+	struct gui *label_light_point_x;
+	struct gui *slider_light_point_x;
+	struct gui *label_light_point_y;
+	struct gui *slider_light_point_y;
+	struct gui *label_light_point_z;
+	struct gui *slider_light_point_z;
 
-	struct gui *slider_fov_label;
+	struct gui *label_fov;
 	struct gui *slider_fov;
 
-	struct gui *animation1_button;
-	struct gui *animation2_button;
-	struct gui *animation3_button;
-	struct gui *animation4_button;
-	struct gui *animation_speed_label;
-	struct gui *animation_speed_slider;
-	struct gui *animation_scale_label;
-	struct gui *animation_scale_slider;
+	struct gui *button_animation1;
+	struct gui *button_animation2;
+	struct gui *button_animation3;
+	struct gui *button_animation4;
+	struct gui *label_animation_speed;
+	struct gui *slider_animation_speed;
+	struct gui *label_animation_scale;
+	struct gui *slider_animation_scale;
 };
 
 static void set_menu(struct model *model, struct menu *menu)
@@ -104,34 +104,34 @@ static void set_menu(struct model *model, struct menu *menu)
 	{
 		if (model->mesh->name)
 		{
-			gui_set_text(menu->model_value, model->mesh->name);
+			gui_set_text(menu->textbox_model_current, model->mesh->name);
 		}
 		else
 		{
-			gui_set_text(menu->model_value, "NULL");
+			gui_set_text(menu->textbox_model_current, "NULL");
 		}
 
 		if (model->base_material.map_kd)
 		{
-			gui_set_text(menu->texture_value, model->base_material.map_kd->name);
+			gui_set_text(menu->textbox_texture_current, model->base_material.map_kd->name);
 		}
 		else
 		{
-			gui_set_text(menu->texture_value, "");
+			gui_set_text(menu->textbox_texture_current, "");
 		}
 
 		if (model->base_material.map_bump)
 		{
-			gui_set_text(menu->norm_value, model->base_material.map_bump->name);
+			gui_set_text(menu->textbox_normal_current, model->base_material.map_bump->name);
 		}
 		else
 		{
-			gui_set_text(menu->norm_value, "");
+			gui_set_text(menu->textbox_normal_current, "");
 		}
 
-		gui_set_text_int(menu->x_value, (int)model->x);
-		gui_set_text_int(menu->y_value, (int)model->y);
-		gui_set_text_int(menu->z_value, (int)model->z);
+		gui_set_text_int(menu->textbox_x_current, (int)model->x);
+		gui_set_text_int(menu->textbox_y_current, (int)model->y);
+		gui_set_text_int(menu->textbox_z_current, (int)model->z);
 
 		gui_set_slider_position(menu->slider_roty, model->theta_y / (2 * PI));
 		gui_set_slider_position(menu->slider_r, model->base_material.ka[0]);
@@ -142,12 +142,12 @@ static void set_menu(struct model *model, struct menu *menu)
 	}
 	else
 	{
-		gui_set_text(menu->model_value, "");
-		gui_set_text(menu->texture_value, "");
-		gui_set_text(menu->norm_value, "");
-		gui_set_text(menu->x_value, "");
-		gui_set_text(menu->y_value, "");
-		gui_set_text(menu->z_value, "");
+		gui_set_text(menu->textbox_model_current, "");
+		gui_set_text(menu->textbox_texture_current, "");
+		gui_set_text(menu->textbox_normal_current, "");
+		gui_set_text(menu->textbox_x_current, "");
+		gui_set_text(menu->textbox_y_current, "");
+		gui_set_text(menu->textbox_z_current, "");
 
 		gui_set_slider_position(menu->slider_roty, 0);
 		gui_set_slider_position(menu->slider_r, 0);
@@ -285,9 +285,9 @@ int main()
 
 	menu.gui_root = gui_create(&font, NULL, 0, 0, cams[0].w, cams[0].h, 0, GUI_ROOT);
 
-	menu.owner_label = gui_create(&font, menu.gui_root, 10, 305, 155, 15, 25, GUI_LABEL);
-	menu.FPS_label = gui_create(&font, menu.gui_root, 10, 5, 26, 15, 10, GUI_LABEL);
-	menu.FPS_value = gui_create(&font, menu.gui_root, 36, 5, 40, 15, 10, GUI_LABEL);
+	menu.label_owner = gui_create(&font, menu.gui_root, 10, 305, 155, 15, 25, GUI_LABEL);
+	menu.label_fps = gui_create(&font, menu.gui_root, 10, 5, 26, 15, 10, GUI_LABEL);
+	menu.textbox_fps = gui_create(&font, menu.gui_root, 36, 5, 40, 15, 10, GUI_LABEL);
 
 	menu.tab = gui_create(&font, menu.gui_root, 10, 285, 200, 15, 0, GUI_TAB);
 	menu.window_scene = gui_add_tab(menu.tab, " Scene", 40, 260);
@@ -296,122 +296,122 @@ int main()
 	menu.window_camera = gui_add_tab(menu.tab, "Camera", 40, 40);
 	menu.window_animation = gui_add_tab(menu.tab, "Animation", 50, 140);
 
-	menu.model_label = gui_create(&font, menu.window_scene, 5, 225, 40, 15, 10, GUI_LABEL);
-	menu.model_value = gui_create(&font, menu.window_scene, 55, 225, 100, 15, 50, GUI_LABEL);
-	menu.x_value = gui_create(&font, menu.window_scene, 55, 165, 30, 15, 50, GUI_LABEL);
-	menu.y_value = gui_create(&font, menu.window_scene, 90, 165, 30, 15, 50, GUI_LABEL);
-	menu.z_value = gui_create(&font, menu.window_scene, 125, 165, 30, 15, 50, GUI_LABEL);
-	menu.text_label = gui_create(&font, menu.window_scene, 5, 185, 40, 15, 10, GUI_LABEL);
-	menu.texture_value = gui_create(&font, menu.window_scene, 55, 185, 100, 15, 50, GUI_LABEL);
-	menu.norm_label = gui_create(&font, menu.window_scene, 5, 205, 40, 15, 10, GUI_LABEL);
-	menu.norm_value = gui_create(&font, menu.window_scene, 55, 205, 100, 15, 50, GUI_LABEL);
-	menu.delete_button = gui_create(&font, menu.window_scene, 55, 145, 100, 15, 50, GUI_BUTTON);
-	menu.left_arrow_button = gui_create(&font, menu.window_scene, 20, 165, 25, 15, 50, GUI_BUTTON);
-	menu.right_arrow_button = gui_create(&font, menu.window_scene, 165, 165, 25, 15, 50, GUI_BUTTON);
-	menu.clear_button = gui_create(&font, menu.window_scene, 55, 125, 100, 15, 50, GUI_BUTTON);
+	menu.label_model_current = gui_create(&font, menu.window_scene, 5, 225, 40, 15, 10, GUI_LABEL);
+	menu.textbox_model_current = gui_create(&font, menu.window_scene, 55, 225, 100, 15, 50, GUI_LABEL);
+	menu.textbox_x_current = gui_create(&font, menu.window_scene, 55, 165, 30, 15, 50, GUI_LABEL);
+	menu.textbox_y_current = gui_create(&font, menu.window_scene, 90, 165, 30, 15, 50, GUI_LABEL);
+	menu.textbox_z_current = gui_create(&font, menu.window_scene, 125, 165, 30, 15, 50, GUI_LABEL);
+	menu.label_texture_current = gui_create(&font, menu.window_scene, 5, 185, 40, 15, 10, GUI_LABEL);
+	menu.textbox_texture_current = gui_create(&font, menu.window_scene, 55, 185, 100, 15, 50, GUI_LABEL);
+	menu.label_normal_current = gui_create(&font, menu.window_scene, 5, 205, 40, 15, 10, GUI_LABEL);
+	menu.textbox_normal_current = gui_create(&font, menu.window_scene, 55, 205, 100, 15, 50, GUI_LABEL);
+	menu.button_delete = gui_create(&font, menu.window_scene, 55, 145, 100, 15, 50, GUI_BUTTON);
+	menu.button_left_arrow = gui_create(&font, menu.window_scene, 20, 165, 25, 15, 50, GUI_BUTTON);
+	menu.button_right_arrow = gui_create(&font, menu.window_scene, 165, 165, 25, 15, 50, GUI_BUTTON);
+	menu.button_clear = gui_create(&font, menu.window_scene, 55, 125, 100, 15, 50, GUI_BUTTON);
 	menu.slider_roty = gui_create(&font, menu.window_scene, 55, 105, 100, 15, 10, GUI_SLIDER);
-	menu.slider_roty_label = gui_create(&font, menu.window_scene, 5, 105, 40, 15, 10, GUI_LABEL);
+	menu.label_roty = gui_create(&font, menu.window_scene, 5, 105, 40, 15, 10, GUI_LABEL);
 	menu.slider_r = gui_create(&font, menu.window_scene, 55, 85, 100, 15, 10, GUI_SLIDER);
-	menu.slider_r_label = gui_create(&font, menu.window_scene, 5, 85, 40, 15, 10, GUI_LABEL);
+	menu.label_r = gui_create(&font, menu.window_scene, 5, 85, 40, 15, 10, GUI_LABEL);
 	menu.slider_g = gui_create(&font, menu.window_scene, 55, 65, 100, 15, 10, GUI_SLIDER);
-	menu.slider_g_label = gui_create(&font, menu.window_scene, 5, 65, 40, 15, 10, GUI_LABEL);
+	menu.label_g = gui_create(&font, menu.window_scene, 5, 65, 40, 15, 10, GUI_LABEL);
 	menu.slider_b = gui_create(&font, menu.window_scene, 55, 45, 100, 15, 10, GUI_SLIDER);
-	menu.slider_b_label = gui_create(&font, menu.window_scene, 5, 45, 40, 15, 10, GUI_LABEL);
+	menu.label_b = gui_create(&font, menu.window_scene, 5, 45, 40, 15, 10, GUI_LABEL);
 	menu.slider_sp = gui_create(&font, menu.window_scene, 55, 25, 100, 15, 10, GUI_SLIDER);
-	menu.slider_sp_label = gui_create(&font, menu.window_scene, 5, 25, 40, 15, 10, GUI_LABEL);
+	menu.label_sp = gui_create(&font, menu.window_scene, 5, 25, 40, 15, 10, GUI_LABEL);
 	menu.slider_ns = gui_create(&font, menu.window_scene, 55, 5, 100, 15, 10, GUI_SLIDER);
-	menu.slider_ns_label = gui_create(&font, menu.window_scene, 5, 5, 40, 15, 10, GUI_LABEL);
+	menu.label_ns = gui_create(&font, menu.window_scene, 5, 5, 40, 15, 10, GUI_LABEL);
 
-	menu.new_model_label = gui_create(&font, menu.window_new, 5, 85, 40, 15, 10, GUI_LABEL);
-	menu.new_model_value = gui_create(&font, menu.window_new, 55, 85, 100, 15, 50, GUI_TEXTBOX);
-	menu.new_x_value = gui_create(&font, menu.window_new, 55, 25, 30, 15, 50, GUI_TEXTBOX);
-	menu.new_y_value = gui_create(&font, menu.window_new, 90, 25, 30, 15, 50, GUI_TEXTBOX);
-	menu.new_z_value = gui_create(&font, menu.window_new, 125, 25, 30, 15, 50, GUI_TEXTBOX);
-	menu.new_text_label = gui_create(&font, menu.window_new, 5, 45, 40, 15, 10, GUI_LABEL);
-	menu.new_texture_value = gui_create(&font, menu.window_new, 55, 45, 100, 15, 50, GUI_TEXTBOX);
-	menu.new_norm_label = gui_create(&font, menu.window_new, 5, 65, 40, 15, 10, GUI_LABEL);
-	menu.new_norm_value = gui_create(&font, menu.window_new, 55, 65, 100, 15, 50, GUI_TEXTBOX);
-	menu.new_create_button = gui_create(&font, menu.window_new, 55, 5, 100, 15, 50, GUI_BUTTON);
+	menu.label_model_new = gui_create(&font, menu.window_new, 5, 85, 40, 15, 10, GUI_LABEL);
+	menu.textbox_model_new = gui_create(&font, menu.window_new, 55, 85, 100, 15, 50, GUI_TEXTBOX);
+	menu.textbox_x_new = gui_create(&font, menu.window_new, 55, 25, 30, 15, 50, GUI_TEXTBOX);
+	menu.textbox_y_new = gui_create(&font, menu.window_new, 90, 25, 30, 15, 50, GUI_TEXTBOX);
+	menu.textbox_z_new = gui_create(&font, menu.window_new, 125, 25, 30, 15, 50, GUI_TEXTBOX);
+	menu.label_texture_new = gui_create(&font, menu.window_new, 5, 45, 40, 15, 10, GUI_LABEL);
+	menu.textbox_texture_new = gui_create(&font, menu.window_new, 55, 45, 100, 15, 50, GUI_TEXTBOX);
+	menu.label_normal_new = gui_create(&font, menu.window_new, 5, 65, 40, 15, 10, GUI_LABEL);
+	menu.textbox_normal_new = gui_create(&font, menu.window_new, 55, 65, 100, 15, 50, GUI_TEXTBOX);
+	menu.create_button_new = gui_create(&font, menu.window_new, 55, 5, 100, 15, 50, GUI_BUTTON);
 
-	menu.check_light_label = gui_create(&font, menu.window_light, 5, 125, 40, 15, 10, GUI_LABEL);
-	menu.check_light = gui_create(&font, menu.window_light, 55, 125, 15, 15, 0, GUI_CHECKBOX);
-	menu.check_shadow_label = gui_create(&font, menu.window_light, 5, 105, 40, 15, 10, GUI_LABEL);
-	menu.check_shadow = gui_create(&font, menu.window_light, 55, 105, 15, 15, 0, GUI_CHECKBOX);
-	menu.check_point_label = gui_create(&font, menu.window_light, 5, 65, 40, 15, 10, GUI_LABEL);
-	menu.check_point = gui_create(&font, menu.window_light, 55, 65, 15, 15, 0, GUI_CHECKBOX);
-	menu.slider_light_label = gui_create(&font, menu.window_light, 5, 85, 40, 15, 10, GUI_LABEL);
-	menu.slider_light = gui_create(&font, menu.window_light, 55, 85, 100, 15, 10, GUI_SLIDER);
-	menu.slider_light_x_label = gui_create(&font, menu.window_light, 5, 45, 40, 15, 10, GUI_LABEL);
-	menu.slider_light_x = gui_create(&font, menu.window_light, 55, 45, 100, 15, 10, GUI_SLIDER);
-	menu.slider_light_y_label = gui_create(&font, menu.window_light, 5, 25, 40, 15, 10, GUI_LABEL);
-	menu.slider_light_y = gui_create(&font, menu.window_light, 55, 25, 100, 15, 10, GUI_SLIDER);
-	menu.slider_light_z_label = gui_create(&font, menu.window_light, 5, 5, 40, 15, 10, GUI_LABEL);
-	menu.slider_light_z = gui_create(&font, menu.window_light, 55, 5, 100, 15, 10, GUI_SLIDER);
+	menu.label_light = gui_create(&font, menu.window_light, 5, 125, 40, 15, 10, GUI_LABEL);
+	menu.checkbox_light = gui_create(&font, menu.window_light, 55, 125, 15, 15, 0, GUI_CHECKBOX);
+	menu.label_shadow = gui_create(&font, menu.window_light, 5, 105, 40, 15, 10, GUI_LABEL);
+	menu.checkbox_shadow = gui_create(&font, menu.window_light, 55, 105, 15, 15, 0, GUI_CHECKBOX);
+	menu.label_light_point = gui_create(&font, menu.window_light, 5, 65, 40, 15, 10, GUI_LABEL);
+	menu.checkbox_light_point = gui_create(&font, menu.window_light, 55, 65, 15, 15, 0, GUI_CHECKBOX);
+	menu.label_light_roty = gui_create(&font, menu.window_light, 5, 85, 40, 15, 10, GUI_LABEL);
+	menu.slider_light_roty = gui_create(&font, menu.window_light, 55, 85, 100, 15, 10, GUI_SLIDER);
+	menu.label_light_point_x = gui_create(&font, menu.window_light, 5, 45, 40, 15, 10, GUI_LABEL);
+	menu.slider_light_point_x = gui_create(&font, menu.window_light, 55, 45, 100, 15, 10, GUI_SLIDER);
+	menu.label_light_point_y = gui_create(&font, menu.window_light, 5, 25, 40, 15, 10, GUI_LABEL);
+	menu.slider_light_point_y = gui_create(&font, menu.window_light, 55, 25, 100, 15, 10, GUI_SLIDER);
+	menu.label_light_point_z = gui_create(&font, menu.window_light, 5, 5, 40, 15, 10, GUI_LABEL);
+	menu.slider_light_point_z = gui_create(&font, menu.window_light, 55, 5, 100, 15, 10, GUI_SLIDER);
 
-	menu.animation1_button = gui_create(&font, menu.window_animation, 5, 105, 100, 15, 50, GUI_BUTTON);
-	menu.animation2_button = gui_create(&font, menu.window_animation, 5, 85, 100, 15, 50, GUI_BUTTON);
-	menu.animation3_button = gui_create(&font, menu.window_animation, 5, 65, 100, 15, 50, GUI_BUTTON);
-	menu.animation4_button = gui_create(&font, menu.window_animation, 5, 45, 100, 15, 50, GUI_BUTTON);
-	menu.animation_speed_label = gui_create(&font, menu.window_animation, 5, 25, 40, 15, 10, GUI_LABEL);
-	menu.animation_speed_slider = gui_create(&font, menu.window_animation, 55, 25, 100, 15, 10, GUI_SLIDER);
-	menu.animation_scale_label = gui_create(&font, menu.window_animation, 5, 5, 40, 15, 10, GUI_LABEL);
-	menu.animation_scale_slider = gui_create(&font, menu.window_animation, 55, 5, 100, 15, 10, GUI_SLIDER);
-
-	menu.slider_fov_label = gui_create(&font, menu.window_camera, 5, 5, 40, 15, 10, GUI_LABEL);
+	menu.label_fov = gui_create(&font, menu.window_camera, 5, 5, 40, 15, 10, GUI_LABEL);
 	menu.slider_fov = gui_create(&font, menu.window_camera, 55, 5, 100, 15, 10, GUI_SLIDER);
 
-	gui_set_text(menu.FPS_label, "FPS:");
-	gui_set_text(menu.owner_label, "Gabriel Alexander Bawden");
+	menu.button_animation1 = gui_create(&font, menu.window_animation, 5, 105, 100, 15, 50, GUI_BUTTON);
+	menu.button_animation2 = gui_create(&font, menu.window_animation, 5, 85, 100, 15, 50, GUI_BUTTON);
+	menu.button_animation3 = gui_create(&font, menu.window_animation, 5, 65, 100, 15, 50, GUI_BUTTON);
+	menu.button_animation4 = gui_create(&font, menu.window_animation, 5, 45, 100, 15, 50, GUI_BUTTON);
+	menu.label_animation_speed = gui_create(&font, menu.window_animation, 5, 25, 40, 15, 10, GUI_LABEL);
+	menu.slider_animation_speed = gui_create(&font, menu.window_animation, 55, 25, 100, 15, 10, GUI_SLIDER);
+	menu.label_animation_scale = gui_create(&font, menu.window_animation, 5, 5, 40, 15, 10, GUI_LABEL);
+	menu.slider_animation_scale = gui_create(&font, menu.window_animation, 55, 5, 100, 15, 10, GUI_SLIDER);
 
-	gui_set_text(menu.model_label, "Model:");
-	gui_set_text(menu.text_label, "Text:");
-	gui_set_text(menu.norm_label, "Norm:");
-	gui_set_text(menu.delete_button, "           Delete");
-	gui_set_text(menu.left_arrow_button, " ←");
-	gui_set_text(menu.right_arrow_button, "  →");
-	gui_set_text(menu.clear_button, "            Clear");
-	gui_set_text(menu.slider_roty_label, "rot_y:");
-	gui_set_text(menu.slider_r_label, "r:");
-	gui_set_text(menu.slider_g_label, "g:");
-	gui_set_text(menu.slider_b_label, "b:");
-	gui_set_text(menu.slider_sp_label, "sp:");
-	gui_set_text(menu.slider_ns_label, "ns:");
+	gui_set_text(menu.label_fps, "FPS:");
+	gui_set_text(menu.label_owner, "Gabriel Alexander Bawden");
 
-	gui_set_text(menu.new_model_label, "Model:");
-	gui_set_text(menu.new_text_label, "Text:");
-	gui_set_text(menu.new_norm_label, "Norm:");
-	gui_set_text(menu.new_create_button, "           Create");
+	gui_set_text(menu.label_model_current, "Model:");
+	gui_set_text(menu.label_texture_current, "Text:");
+	gui_set_text(menu.label_normal_current, "Norm:");
+	gui_set_text(menu.button_delete, "           Delete");
+	gui_set_text(menu.button_left_arrow, " ←");
+	gui_set_text(menu.button_right_arrow, "  →");
+	gui_set_text(menu.button_clear, "            Clear");
+	gui_set_text(menu.label_roty, "rot_y:");
+	gui_set_text(menu.label_r, "r:");
+	gui_set_text(menu.label_g, "g:");
+	gui_set_text(menu.label_b, "b:");
+	gui_set_text(menu.label_sp, "sp:");
+	gui_set_text(menu.label_ns, "ns:");
 
-	gui_set_text(menu.check_light_label, "Light:");
-	gui_set_text(menu.check_shadow_label, "Shad:");
-	gui_set_text(menu.check_point_label, "Point:");
-	gui_set_text(menu.slider_light_label, "rot_y:");
-	gui_set_text(menu.slider_light_x_label, "pos_x:");
-	gui_set_text(menu.slider_light_y_label, "pos_y:");
-	gui_set_text(menu.slider_light_z_label, "pos_z:");
+	gui_set_text(menu.label_model_new, "Model:");
+	gui_set_text(menu.label_texture_new, "Text:");
+	gui_set_text(menu.label_normal_new, "Norm:");
+	gui_set_text(menu.create_button_new, "           Create");
+
+	gui_set_text(menu.label_light, "Light:");
+	gui_set_text(menu.label_shadow, "Shad:");
+	gui_set_text(menu.label_light_point, "Point:");
+	gui_set_text(menu.label_light_roty, "rot_y:");
+	gui_set_text(menu.label_light_point_x, "pos_x:");
+	gui_set_text(menu.label_light_point_y, "pos_y:");
+	gui_set_text(menu.label_light_point_z, "pos_z:");
 	gui_set_slider_position(menu.slider_roty, 0);
-	gui_set_slider_position(menu.slider_light_x, 0.5f);
-	gui_set_slider_position(menu.slider_light_y, 0.5f);
-	gui_set_slider_position(menu.slider_light_z, 0.5f);
+	gui_set_slider_position(menu.slider_light_point_x, 0.5f);
+	gui_set_slider_position(menu.slider_light_point_y, 0.5f);
+	gui_set_slider_position(menu.slider_light_point_z, 0.5f);
 
-	gui_set_text(menu.slider_fov_label, "FOV:");
+	gui_set_text(menu.label_fov, "FOV:");
 	gui_set_slider_position(menu.slider_fov, (cams[0].fov - 40) / 80);
 
-	gui_set_text(menu.animation1_button, "      No Animation");
-	gui_set_text(menu.animation2_button, "        X-Direction");
-	gui_set_text(menu.animation3_button, "        Z-Direction");
-	gui_set_text(menu.animation4_button, "       XZ-Direction");
-	gui_set_text(menu.animation_speed_label, "Speed:");
-	gui_set_text(menu.animation_scale_label, "Scale:");
-	gui_set_slider_position(menu.animation_speed_slider, (animation_speed - 10) / 50.0f);
-	gui_set_slider_position(menu.animation_scale_slider, (animation_scale / 2.0f));
+	gui_set_text(menu.button_animation1, "      No Animation");
+	gui_set_text(menu.button_animation2, "        X-Direction");
+	gui_set_text(menu.button_animation3, "        Z-Direction");
+	gui_set_text(menu.button_animation4, "       XZ-Direction");
+	gui_set_text(menu.label_animation_speed, "Speed:");
+	gui_set_text(menu.label_animation_scale, "Scale:");
+	gui_set_slider_position(menu.slider_animation_speed, (animation_speed - 10) / 50.0f);
+	gui_set_slider_position(menu.slider_animation_scale, (animation_scale / 2.0f));
 
 	light_dir_set_theta_y(&light_dirs[0], PI / 2.2f);
-	gui_set_slider_position(menu.slider_light, light_dirs[0].theta_y / (2 * PI));
+	gui_set_slider_position(menu.slider_light_roty, light_dirs[0].theta_y / (2 * PI));
 
-	gui_set_state(menu.check_light, lighting);
+	gui_set_state(menu.checkbox_light, lighting);
 
-	gui_hide(menu.owner_label);
+	gui_hide(menu.label_owner);
 	gui_hide(menu.gui_root);
 
 	float speed = 0.1f;
@@ -456,8 +456,8 @@ int main()
 						{
 						case 'M':
 						{
-							//gui_show(&guis, owner_label);
-							menu.owner_label->visible = !menu.owner_label->visible;
+							//gui_show(&guis, label_owner);
+							menu.label_owner->visible = !menu.label_owner->visible;
 
 							break;
 						}
@@ -628,13 +628,13 @@ int main()
 			{
 			case GUI_EVENT_BUTTON_PRESS:
 			{
-				if (evt.id == menu.new_create_button)
+				if (evt.id == menu.create_button_new)
 				{
-					struct mesh *model = mesh_find(&models, gui_get_text(menu.new_model_value));
+					struct mesh *model = mesh_find(&models, gui_get_text(menu.textbox_model_new));
 					
-					struct texture *tex = texture_find(&textures, gui_get_text(menu.new_texture_value));
+					struct texture *tex = texture_find(&textures, gui_get_text(menu.textbox_texture_new));
  
-					struct texture *norm = texture_find(&textures, gui_get_text(menu.new_norm_value));
+					struct texture *norm = texture_find(&textures, gui_get_text(menu.textbox_normal_new));
 
 					if (str_equal(tex->name, "placeholder"))
 					{
@@ -654,9 +654,9 @@ int main()
 
 					struct model model_new;
 					model_create(&model_new, model, tex);
-					model_set_x(&model_new, (float)str_str_to_int(gui_get_text(menu.new_x_value)));
-					model_set_y(&model_new, (float)str_str_to_int(gui_get_text(menu.new_y_value)));
-					model_set_z(&model_new, (float)str_str_to_int(gui_get_text(menu.new_z_value)));
+					model_set_x(&model_new, (float)str_str_to_int(gui_get_text(menu.textbox_x_new)));
+					model_set_y(&model_new, (float)str_str_to_int(gui_get_text(menu.textbox_y_new)));
+					model_set_z(&model_new, (float)str_str_to_int(gui_get_text(menu.textbox_z_new)));
 					model_new.base_material.map_bump = norm;
 					dynarray_push(&scene, &model_new);
 
@@ -671,7 +671,7 @@ int main()
 
 					break;
 				}
-				if (evt.id == menu.delete_button)
+				if (evt.id == menu.button_delete)
 				{
 					dynarray_remove(&scene, current_index);
 
@@ -693,7 +693,7 @@ int main()
 
 					break;
 				}
-				if (evt.id == menu.clear_button)
+				if (evt.id == menu.button_clear)
 				{
 					dynarray_clear(&scene);
 
@@ -703,7 +703,7 @@ int main()
 
 					break;
 				}
-				if (evt.id == menu.left_arrow_button)
+				if (evt.id == menu.button_left_arrow)
 				{
 					if (current_index > 0)
 					{
@@ -714,7 +714,7 @@ int main()
 						set_menu(current_model, &menu);
 					}
 				}
-				if (evt.id == menu.right_arrow_button)
+				if (evt.id == menu.button_right_arrow)
 				{
 					if (current_index < dynarray_len(&scene) - 1)
 					{
@@ -725,19 +725,19 @@ int main()
 						set_menu(current_model, &menu);
 					}
 				}
-				if (evt.id == menu.animation1_button)
+				if (evt.id == menu.button_animation1)
 				{
 					animation = 0;
 				}
-				if (evt.id == menu.animation2_button)
+				if (evt.id == menu.button_animation2)
 				{
 					animation = 1;
 				}
-				if (evt.id == menu.animation3_button)
+				if (evt.id == menu.button_animation3)
 				{
 					animation = 2;
 				}
-				if (evt.id == menu.animation4_button)
+				if (evt.id == menu.button_animation4)
 				{
 					animation = 3;
 				}
@@ -746,19 +746,19 @@ int main()
 			}
 			case GUI_EVENT_CHECKBOX_PRESS:
 			{
-				if (evt.id == menu.check_light)
+				if (evt.id == menu.checkbox_light)
 				{
 					lighting = (unsigned char)evt.data;
 
 					break;
 				}
-				if (evt.id == menu.check_shadow)
+				if (evt.id == menu.checkbox_shadow)
 				{
 					shadow = (unsigned char)evt.data;
 
 					break;
 				}
-				if (evt.id == menu.check_point)
+				if (evt.id == menu.checkbox_light_point)
 				{
 					lighting_point = (unsigned char)evt.data;
 
@@ -769,7 +769,7 @@ int main()
 			}
 			case GUI_EVENT_SLIDER_MOVE:
 			{
-				if (evt.id == menu.slider_light)
+				if (evt.id == menu.slider_light_roty)
 				{
 					float theta_y = 2 * PI * evt.data_float;
 
@@ -809,23 +809,23 @@ int main()
 				{
 					((struct model *)scene.array)[current_index].base_material.ns = 50 * evt.data_float;
 				}
-				if (evt.id == menu.slider_light_x)
+				if (evt.id == menu.slider_light_point_x)
 				{
 					light_point_set_x(&light_points[0], -40 + 5 * (2 * evt.data_float - 1));
 				}
-				if (evt.id == menu.slider_light_y)
+				if (evt.id == menu.slider_light_point_y)
 				{
 					light_point_set_y(&light_points[0], 5 * (2 * evt.data_float - 1));
 				}
-				if (evt.id == menu.slider_light_z)
+				if (evt.id == menu.slider_light_point_z)
 				{
 					light_point_set_z(&light_points[0], -10 * evt.data_float);
 				}
-				if (evt.id == menu.animation_speed_slider)
+				if (evt.id == menu.slider_animation_speed)
 				{
 					animation_speed = (50 * evt.data_float) + 10;
 				}
-				if (evt.id == menu.animation_scale_slider)
+				if (evt.id == menu.slider_animation_scale)
 				{
 					animation_scale = (2 * evt.data_float);
 				}
@@ -839,19 +839,19 @@ int main()
 		{
 			if (wnd.keystates['W'])
 			{
-				camera_key_x(&cams[0], speed);
+				camera_key_z(&cams[0], speed);
 			}
 			if (wnd.keystates['S'])
 			{
-				camera_key_x(&cams[0], -speed);
+				camera_key_z(&cams[0], -speed);
 			}
 			if (wnd.keystates['D'])
 			{
-				camera_key_z(&cams[0], speed);
+				camera_key_x(&cams[0], speed);
 			}
 			if (wnd.keystates['A'])
 			{
-				camera_key_z(&cams[0], -speed);
+				camera_key_x(&cams[0], -speed);
 			}
 			if (wnd.keystates['I'])
 			{
@@ -899,7 +899,7 @@ int main()
 
 			time = os_time_tick_count();
 
-			gui_set_text_int(menu.FPS_value, FPS);
+			gui_set_text_int(menu.textbox_fps, FPS);
 		}
 
 		struct mesh *wave = mesh_find(&models, "wave");

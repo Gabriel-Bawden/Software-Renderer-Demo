@@ -1,5 +1,7 @@
 #include "math.h"
 
+#include <stddef.h>
+
 int math_abs_int(int a) //Should handle min int
 {
 	if (a < 0)
@@ -32,6 +34,18 @@ int math_min_int(int a, int b)
 	}
 }
 
+size_t math_min_size_t(size_t a, size_t b)
+{
+	if (a < b)
+	{
+		return a;
+	}
+	else
+	{
+		return b;
+	}
+}
+
 float math_min_float(float a, float b)
 {
 	if (a < b)
@@ -45,6 +59,18 @@ float math_min_float(float a, float b)
 }
 
 int math_max_int(int a, int b)
+{
+	if (b < a)
+	{
+		return a;
+	}
+	else
+	{
+		return b;
+	}
+}
+
+size_t math_max_size_t(size_t a, size_t b)
 {
 	if (b < a)
 	{
