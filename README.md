@@ -91,9 +91,9 @@ The Animation tab enables the user to animate one specific model. Included in th
 
 <table>
   <tr>
-    <td align="center">X Wave</td>
-    <td align="center">Z Wave</td>
-    <td align="center">XZ Wave</td>
+    <td align="center">X-Direction</td>
+    <td align="center">Z-Direction</td>
+    <td align="center">XZ-Direction</td>
   </tr>
   <tr>
     <td align="center">
