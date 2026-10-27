@@ -128,5 +128,4 @@ Note that the camera cannot be moved while the GUI is visible.
 | Space | Move up |
 | Escape | Toggle GUI |
 | Enter | Reset position |
-| Escape | Toggle GUI |
 | Mouse | Move camera |
