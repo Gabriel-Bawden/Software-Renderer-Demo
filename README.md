@@ -55,7 +55,7 @@ As the user traverses the scene, individual models can be removed using the dele
   <img src="images/menu_new.png" alt="menu_new" width="250">
 </p>
 
-The New tab enables the user to add new models to the scene. The user can choose any model within the models folder and can also apply any texture or normal map from the textures folder. Not all models can have textures applied, and textures are only visible when lighting is disabled.
+The New tab enables the user to add new models to the scene. The user can choose any model within the models folder and can also apply any texture or normal map from the textures folder. Not all models support textures or normal maps, and textures are currently only visible when lighting is disabled.
 
 The models are stored as a custom MDL file format; OBJ files can be converted to MDL files using the provided `model_converter.py` script. Textures and normal maps are stored as BMP files. Above the create button, which adds the model to the scene, are three textboxes; here the user can input the desired X,Y,Z position for the model. These values must be integers.
 
@@ -87,23 +87,32 @@ The Camera tab enables the user to alter aspects of the camera. Currently, the o
   <img src="images/menu_animation.png" alt="menu_animation" width="250">
 </p>
 
-<p align="center">
-  <img src="images/wave.gif" alt="wave" width="350">
-</p>
+The Animation tab enables the user to animate one specific model. Included in the models folder is a model named wave. The user can pick from three different animation styles, and these will apply to all instances of the wave model in the scene. In the scenes initial layout, there is a wave model located up and off to the right from the starting position. Below are examples of the three different animation styles that can be applied:
 
 <table>
+  <tr>
+    <td align="center">X Wave</td>
+    <td align="center">Z Wave</td>
+    <td align="center">XZ Wave</td>
+  </tr>
   <tr>
     <td align="center">
       <img src="images/wave_1.png" alt="wave_1" width="250"><br>
     </td>
     <td align="center">
-      <img src="images/wave_2.png" alt="wave_2" width="250"><br>
+      <img src="images/wave_3.png" alt="wave_2" width="250"><br>
     </td>
     <td align="center">
-      <img src="images/wave_3.png" alt="wave_3" width="250"><br>
+      <img src="images/wave_2.png" alt="wave_3" width="250"><br>
     </td>
   </tr>
 </table>
+
+The speed slider controls how fast the animation proceeds; as the slider is moved further to the right, the animations slows down. The scale slider controls the frequency of the waves; as the slider is moved further to the right, the frequency increases.
+
+<p align="center">
+  <img src="images/wave.gif" alt="wave" width="350">
+</p>
 
 ## Controls
 
