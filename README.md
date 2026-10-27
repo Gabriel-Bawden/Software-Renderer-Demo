@@ -100,10 +100,10 @@ The Animation tab enables the user to animate one specific model. Included in th
       <img src="images/wave_1.png" alt="wave_1" width="250"><br>
     </td>
     <td align="center">
-      <img src="images/wave_3.png" alt="wave_2" width="250"><br>
+      <img src="images/wave_2.png" alt="wave_2" width="250"><br>
     </td>
     <td align="center">
-      <img src="images/wave_2.png" alt="wave_3" width="250"><br>
+      <img src="images/wave_3.png" alt="wave_3" width="250"><br>
     </td>
   </tr>
 </table>
