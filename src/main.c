@@ -250,7 +250,7 @@ int main()
 	model_create(&test4, mesh_find(&models, "square"), NULL);
 	model_set_z(&test4, 10);
 	//model_set_theta_x(&test4, -PI/2);
-	model_set_scale(&test4, 5);
+	model_set_scale(&test4, 15);
 	test4.base_material.kd[0] = 0;
 	test4.base_material.ka[0] = 0;
 	test4.base_material.kd[1] = 0.25f;
@@ -852,36 +852,6 @@ int main()
 			if (wnd.keystates['A'])
 			{
 				camera_key_x(&cams[0], -speed);
-			}
-			if (wnd.keystates['I'])
-			{
-				float theta_x = cams[0].theta_x + (speed / 2);
-
-				if (theta_x <= PI / 2)
-				{
-					camera_set_theta_x(&cams[0], theta_x);
-				}
-			}
-			if (wnd.keystates['K'])
-			{
-				float theta_x = cams[0].theta_x - (speed / 2);
-
-				if (theta_x >= -PI / 2)
-				{
-					camera_set_theta_x(&cams[0], theta_x);
-				}
-			}
-			if (wnd.keystates['J'])
-			{
-				float theta_y = cams[0].theta_y + speed / 2;
-
-				camera_set_theta_y(&cams[0], theta_y);
-			}
-			if (wnd.keystates['L'])
-			{
-				float theta_y = cams[0].theta_y - speed / 2;
-
-				camera_set_theta_y(&cams[0], theta_y);
 			}
 			if (wnd.keystates[' '])
 			{
