@@ -59,7 +59,7 @@ The following table shows some examples of the scenes the user can construct wit
 </p>
 
 <p align="center">
-  <img src="images/wave.gif" alt="wave" width="250">
+  <img src="images/wave.gif" alt="wave" width="350">
 </p>
 
 <table>
