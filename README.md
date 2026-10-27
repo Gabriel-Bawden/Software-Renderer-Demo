@@ -2,7 +2,9 @@
 
 ## Overview
 
-This program consists of a software renderer along with a custom-made GUI library for manipulating the scene. The user can create a scene consisting of the provided 3D models. Textures and normal maps may also be applied to these models, and the models' materials may be altered as well. The user may also alter the scene's lighting, switching between directional and point lights or enabling shadows. Included as well is a Python script for converting between this program's MDL file format and OBJ files. The GUI consists of a font renderer along with elements such as textboxes, buttons, checkboxes, sliders, and tabs.
+This program consists of a software renderer along with a custom-made GUI library for manipulating the scene. The user can create a scene consisting of the provided 3D models. Textures and normal maps may also be applied to these models, and the models' materials may be altered as well. The user may also alter the scene's lighting, switching between directional and point lights or enabling shadows.
+
+Included as well is a Python script for converting between this program's custom MDL file format and OBJ files. The GUI consists of a font renderer along with elements such as textboxes, buttons, checkboxes, sliders, and tabs.
 
 <p align="center">
   <img src="images/program.png" alt="program" width="400">
@@ -36,9 +38,9 @@ The interface consists of five tabs, Scene, New, Light, Camera, and animation wh
   <img src="images/menu_scene.png" alt="menu_scene" width="250">
 </p>
 
-The Scene tab enables the user to view and alter any of the elements in the current scene. With the two arrow buttons, the user can traverse all models in the scene, ordered by when they were added; information such as the model's name, assigned normal map or texture, position (indicated by the three textboxes between the two arrow buttons), and material properties is updated accordingly. As the user traverses the scene, individual models can be removed using the delete button, and the entire scene can be cleared with the clear button.
+The Scene tab enables the user to view and alter any of the elements in the current scene. With the two arrow buttons, the user can traverse all models in the scene, ordered by when they were added; information such as the model's name, assigned normal map or texture, position (indicated by the three textboxes between the two arrow buttons), and material properties is updated accordingly.
 
-Below the clear button are six sliders for editing the selected model's properties. They have the following functions:
+As the user traverses the scene, individual models can be removed using the delete button, and the entire scene can be cleared with the clear button. Below the clear button are six sliders for editing the selected model's properties. They have the following functions:
 
 - **Rot_Y**: Controls the model's rotation about it's y-axis
 - **Color_R**: Controls the red component of the model's material
