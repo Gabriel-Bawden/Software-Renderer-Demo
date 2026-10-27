@@ -58,7 +58,27 @@ The following table shows some examples of the scenes the user can construct wit
   <img src="images/menu_animation.png" alt="menu_animation" width="250">
 </p>
 
+<p align="center">
+  <img src="images/wave.gif" alt="wave" width="250">
+</p>
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="images/wave_1.png" alt="wave_1" width="250"><br>
+    </td>
+    <td align="center">
+      <img src="images/wave_2.png" alt="wave_2" width="250"><br>
+    </td>
+    <td align="center">
+      <img src="images/wave_3.png" alt="wave_3" width="250"><br>
+    </td>
+  </tr>
+</table>
+
 ## Controls
+
+Note that the camera cannot be moved while the GUI is visible.
 
 | Key | Action |
 | :---: | :---: |
@@ -70,3 +90,5 @@ The following table shows some examples of the scenes the user can construct wit
 | Space | Move up |
 | Escape | Toggle GUI |
 | Enter | Reset position |
+| Escape | Toggle GUI |
+| Mouse | Move camera |
